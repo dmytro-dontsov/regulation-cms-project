@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES2024",
+    "module": "CommonJS",
+    "lib": ["ES2024"],
+    "outDir": "services/boilerplate/dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@commons/failure": ["common/failure/index.ts"]
+    },
+    "moduleResolution": "node"
+  },
+  "include": [
+    "src/**/*",
+    "test/**/*",
+    "packages/**/*"
+  ],
+  "references": [
+    { "path": "./common/failure" }
+  ],
+  "exclude": ["node_modules"]
+}

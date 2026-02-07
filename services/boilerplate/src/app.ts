@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
-import failureMiddleware from '@commons/failure/failureMiddleware';
 import { router as failureRouter } from './failures';
-import {notFoundHandler} from "@commons/failure/notFoundHandler";
+import {notFoundHandler} from "../../../common/failure/notFoundHandler";
+import failureMiddleware from "../../../common/failure/failureMiddleware";
 
 const app = express();
 const port = process.env.PORT || 3000;
