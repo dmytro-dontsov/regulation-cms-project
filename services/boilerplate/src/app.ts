@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
-import failureMiddleware from '@commons/failure/middleware';
-import { NotFoundFailure } from '@commons/failure';
+import failureMiddleware from '@commons/failure/failureMiddleware';
 import { router as failureRouter } from './failures';
+import {notFoundHandler} from "@commons/failure/notFoundHandler";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -13,10 +13,10 @@ app.get('/', (_req: Request, res: Response) => {
 });
 app.use('/', failureRouter);
 
-app.use((req: Request) => {
-  throw new NotFoundFailure(`Endpoint ${req.method} ${req.url} not found`);
-});
+app.use(notFoundHandler);
 app.use(failureMiddleware);
+
+
 
 export default app;
 
