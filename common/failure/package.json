@@ -1,8 +1,13 @@
 {
   "name": "@commons/failure",
   "version": "1.0.0",
-  "description": "Локальний модуль для обробки помилок",
-  "main": "index.ts",
-  "types": "index.ts",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.2.1",
+    "typescript": "^5.9.3"
+  }
 }

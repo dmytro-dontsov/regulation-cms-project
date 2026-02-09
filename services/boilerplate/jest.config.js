@@ -5,8 +5,8 @@ module.exports = {
 
   // 👇 кажемо Jest, де реально лежить код
   roots: [
-    '<rootDir>/services/boilerplate/src',
-    '<rootDir>/services/boilerplate/tests',
+    '<rootDir>/src',
+    '<rootDir>/tests',
   ],
 
   testMatch: ['**/?(*.)+(spec|test).ts'],
@@ -22,17 +22,12 @@ module.exports = {
     ],
   },
 
-  // alias для common/*
-  moduleNameMapper: {
-    '^@commons/(.*)$': '<rootDir>/common/$1',
-  },
-
   transformIgnorePatterns: ['node_modules/(?!@commons/)'],
 
   collectCoverage: true,
   collectCoverageFrom: [
-    'services/boilerplate/src/**/*.ts',
-    'common/**/*.ts',
+    '<rootDir>/src/**/*.ts',
+    '<rootDir>/../common/**/*.ts',
     '!**/*.d.ts',
   ],
 
