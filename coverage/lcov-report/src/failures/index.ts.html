@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for common/failure/index.ts</title>
+    <title>Code coverage report for src/failures/index.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">common/failure</a> index.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/failures</a> index.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">22.22% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/9</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">22.22% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/9</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
@@ -84,68 +84,56 @@
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L22'></a><a href='#L22'>22</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">class Failure extends Error {
-  type = <span class="cstat-no" title="statement not covered" >'Failure';</span>
-  responseCode = <span class="cstat-no" title="statement not covered" >400;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import Failure from '@commons/failure';</span>
+<span class="cstat-no" title="statement not covered" >import { Router } from 'express'</span>
 &nbsp;
-<span class="fstat-no" title="function not covered" >  constructor(m</span>essage: string) {
-<span class="cstat-no" title="statement not covered" >    super(message);</span>
-  }
+export const <span class="cstat-no" title="statement not covered" >router = Router();</span>
 &nbsp;
-<span class="fstat-no" title="function not covered" >  getResponse(</span>) {
-<span class="cstat-no" title="statement not covered" >    return {</span>
-      type: this.type,
-      message: this.message,
-    };
-  }
-}
+<span class="cstat-no" title="statement not covered" >router.get('/failure', <span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  throw new Failure('This is a failure example');</span>
+});
 &nbsp;
-export class NotFoundFailure extends Failure {
-  type = <span class="cstat-no" title="statement not covered" >'NotFound';</span>
-  responseCode = <span class="cstat-no" title="statement not covered" >404;</span>
+<span class="cstat-no" title="statement not covered" >router.get('/error', <span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  throw new Error('This is an unexpected error');</span>
+});
 &nbsp;
-<span class="fstat-no" title="function not covered" >  constructor(m</span>essage: string) {
-<span class="cstat-no" title="statement not covered" >    super(message);</span>
-  }
-}
-&nbsp;
-export default Failure;</pre></td></tr></table></pre>
+<span class="cstat-no" title="statement not covered" >router.get('/async-error', <span class="fstat-no" title="function not covered" >async </span>() =&gt; {</span>
+  const promise = <span class="cstat-no" title="statement not covered" >new Promise(<span class="fstat-no" title="function not covered" >(_</span>, reject) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    setTimeout(<span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      reject(new Failure('This is an unexpected async error'));</span>
+    }, 100);
+  });
+<span class="cstat-no" title="statement not covered" >  await promise;</span>
+});
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-08T10:08:52.158Z
+                at 2026-02-08T09:40:16.076Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
