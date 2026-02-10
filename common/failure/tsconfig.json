@@ -1,8 +1,19 @@
 {
-  "extends": "../../tsconfig.json", // Беремо налаштування з кореня
   "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "./"
-  },
-  "include": ["index.ts"]
+    "target": "ES2024",
+    "module": "commonjs",
+    "lib": ["ES2024"],
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["node_modules/*", "src/types/*"]
+    },
+    "moduleResolution": "node"
+  }
 }
