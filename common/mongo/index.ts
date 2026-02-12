@@ -1,37 +1,55 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, Db } from 'mongodb';
 
-const MONGO_USERNAME = process.env.MONGO_USER;
-const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
-const MONGO_HOST = process.env.MONGO_HOST;
-const MONGO_PORT = process.env.MONGO_PORT;
-const MONGO_DB_NAME = process.env.SERVICE_NAME;
+class MongoConnection {
+    private static instance: MongoConnection;
+    private client: MongoClient;
+    private db: Db | null = null;
 
-if (!MONGO_USERNAME || !MONGO_PASSWORD || !MONGO_HOST || !MONGO_PORT || !MONGO_DB_NAME) {
-    console.log(MONGO_USERNAME, MONGO_PASSWORD, MONGO_HOST, MONGO_PORT, MONGO_DB_NAME);
-    throw new Error(
-        'Should set mongodb environment variables: MONGO_USER, MONGO_PASSWORD, MONGO_HOST, MONGO_PORT, MONGO_DB_NAME'
-    );
-}
+    private constructor() {
+        const {
+            MONGO_USER,
+            MONGO_PASSWORD,
+            MONGO_HOST,
+            MONGO_PORT,
+            SERVICE_NAME,
+            NODE_ENV
+        } = process.env;
 
-const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}?authSource=admin`;
-const client = new MongoClient(url);
+        if (!MONGO_USER || !MONGO_PASSWORD || !MONGO_HOST || !MONGO_PORT || !SERVICE_NAME) {
+            throw new Error('Missing MongoDB environment variables');
+        }
 
-let db: ReturnType<typeof client.db>;
+        const url = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}?authSource=admin`;
+        this.client = new MongoClient(url);
 
-export const connectDB = async () => {
-    const dbName = process.env.NODE_ENV === 'test' ? `test_${MONGO_DB_NAME}`: MONGO_DB_NAME;
-    try {
-        await client.connect();
-        console.log('✅ connected to MongoDB');
-        db = client.db(dbName);
-    } catch (error) {
-        console.error('❌ error connect to MongoDB', error);
-        throw error;
+        const dbName = NODE_ENV === 'test' ? `test_${SERVICE_NAME}` : SERVICE_NAME;
+        this.db = this.client.db(dbName);
+    }
+
+    public static getInstance(): MongoConnection {
+        if (!MongoConnection.instance) {
+            MongoConnection.instance = new MongoConnection();
+        }
+        return MongoConnection.instance;
+    }
+
+    public async connect(): Promise<void> {
+        try {
+            await this.client.connect();
+            console.log('✅ Connected to MongoDB');
+        } catch (error) {
+            console.error('❌ Error connecting to MongoDB', error);
+            throw error;
+        }
+    }
+
+    public getDatabase(): Db {
+        if (!this.db) {
+            throw new Error('Database not initialized. Call connect() first.');
+        }
+        return this.db;
     }
 }
-export const getDB = () => {
-    if (!db) {
-        throw new Error('Database not connected. Please call connectDB first.');
-    }
-    return db;
-}
+
+export const connectDB = () => MongoConnection.getInstance().connect();
+export const getDB = () => MongoConnection.getInstance().getDatabase();
