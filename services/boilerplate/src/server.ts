@@ -1,6 +1,6 @@
 process.loadEnvFile();
 import { start } from './app';
-import { connectDB } from '../../../common/mongo';
+import { connectDB } from '@commons/mongo';
 
 async function startServer() {
     try {

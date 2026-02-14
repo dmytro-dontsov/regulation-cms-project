@@ -1,7 +1,6 @@
-process.loadEnvFile();
 import request from 'supertest';
 import app from '../src/app';
-import {connectDB, getDB} from "../../../common/mongo";
+import {connectDB, getDB} from "@commons/mongo";
 
 beforeAll(async () => {
     await connectDB();

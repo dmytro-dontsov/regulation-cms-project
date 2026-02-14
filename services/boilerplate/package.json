@@ -5,13 +5,14 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/app.js",
-    "dev": "npx concurrently -n \"TS,NODE\" \"tsc -w --preserveWatchOutput\" \"node --watch dist/src/server.js\"",
+    "dev": "npx concurrently \"tsc -w --preserveWatchOutput\" \"node --watch dist/src/server.js\"",
     "lint": "biome check .",
     "format": "biome format --write .",
     "test": "jest"
   },
   "dependencies": {
     "@commons/failure": "file:../../common/failure",
+    "@commons/mongo": "file:../../common/mongo",
     "express": "^5.2.1",
     "mongodb": "^7.1.0"
   },
