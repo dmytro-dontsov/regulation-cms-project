@@ -24,12 +24,7 @@ module.exports = {
 
   transformIgnorePatterns: ['node_modules/(?!@commons/)'],
 
-  collectCoverage: true,
-  collectCoverageFrom: [
-    '<rootDir>/src/**/*.ts',
-    '<rootDir>/../common/**/*.ts',
-    '!**/*.d.ts',
-  ],
-
   clearMocks: true,
+
+  setupFiles: ['<rootDir>/jest.setup.js'],
 };
