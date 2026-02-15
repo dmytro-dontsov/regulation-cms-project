@@ -49,7 +49,13 @@ class MongoConnection {
         }
         return this.db;
     }
+
+    public async disconnect(): Promise<void> {
+        await this.client.close();
+        console.log('✅ Disconnected from MongoDB');
+    }
 }
 
 export const connectDB = () => MongoConnection.getInstance().connect();
 export const getDB = () => MongoConnection.getInstance().getDatabase();
+export const disconnectDB = () => MongoConnection.getInstance().disconnect();
