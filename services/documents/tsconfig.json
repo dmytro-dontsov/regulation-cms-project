@@ -12,9 +12,14 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "*": ["node_modules/*", "src/types/*"]
+      "@commons/mongo": ["../../common/mongo/index.ts"],
+      "@commons/failure": ["../../common/failure/index.ts"],
+      "@commons/validation": ["../../common/validation/index.ts"],
+      "@src/*": ["./src/*"],
+      "@regulations/*": ["./src/regulations/*"],
+      "@tests/*": ["./tests/*"]
     },
     "moduleResolution": "node"
   },
-  "include": ["src/**/*", "test/**/*", "node_modules/@commons/**/*"]
+  "include": ["src/**/*", "tests/**/*"]
 }

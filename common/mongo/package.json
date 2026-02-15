@@ -4,5 +4,9 @@
   "private": true,
   "dependencies": {
     "mongodb": "^7.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.3",
+    "typescript": "^5.9.3"
   }
 }

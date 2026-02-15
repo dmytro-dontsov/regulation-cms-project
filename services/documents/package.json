@@ -13,6 +13,7 @@
   "dependencies": {
     "@commons/failure": "file:../../common/failure",
     "@commons/mongo": "file:../../common/mongo",
+    "@commons/validation": "file:../../common/validation",
     "express": "^5.2.1",
     "mongodb": "^7.1.0",
     "zod": "^4.3.6"

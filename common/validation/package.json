@@ -3,5 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@commons/failure": "file:../failure",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.3",
+    "typescript": "^5.9.3"
   }
 }
