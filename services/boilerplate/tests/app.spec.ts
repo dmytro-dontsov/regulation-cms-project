@@ -27,7 +27,6 @@ it('should return 400 for /failure endpoint', async () => {
     type: 'Failure',
     message: 'This is a failure example',
   });
-  console.error(process.env.SERVICE_NAME)
 });
 
 it.skip('should return failure for /async-error endpoint', async () => {

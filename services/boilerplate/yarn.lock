@@ -330,7 +330,9 @@
     express "^5.2.1"
 
 "@commons/mongo@file:../../common/mongo":
-  version "0.0.0"
+  version "1.0.0"
+  dependencies:
+    mongodb "^7.1.0"
 
 "@cspotcode/source-map-support@^0.8.0":
   version "0.8.1"
