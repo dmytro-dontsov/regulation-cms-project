@@ -23,4 +23,24 @@ export class NotFoundFailure extends Failure {
   }
 }
 
+export class ValidationFailure extends Failure {
+  type = 'ValidationFailure';
+  responseCode = 400;
+  details: unknown;
+
+  constructor(details: unknown) {
+    super('Validation failed');
+    this.details = details;
+  }
+
+  getResponse() {
+    const baseResponse = super.getResponse();
+
+    return {
+      ...baseResponse,
+      details: this.details,
+    }
+  }
+}
+
 export default Failure;
