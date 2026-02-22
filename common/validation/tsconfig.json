@@ -12,8 +12,10 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "*": ["node_modules/*", "src/types/*"]
+      "@commons/failure": ["../failure/index.ts"],
+      "@commons/mongo": ["../mongo/index.ts"],
+      "@commons/validation": ["../validation/index.ts"]
     },
     "moduleResolution": "node"
-  }
+  },
 }

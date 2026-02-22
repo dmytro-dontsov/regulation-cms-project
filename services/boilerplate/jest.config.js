@@ -13,6 +13,12 @@ module.exports = {
 
   moduleFileExtensions: ['ts', 'js', 'json'],
 
+  moduleNameMapper: {
+    '^@commons/(.*)$': '<rootDir>/../../common/$1/index.ts',
+    '^@src/(.*)$': '<rootDir>/src/$1',
+    '^@tests/(.*)$': '<rootDir>/tests/$1',
+  },
+
   transform: {
     '^.+\\.ts$': [
       'ts-jest',
@@ -28,3 +34,5 @@ module.exports = {
 
   globalSetup: '<rootDir>/jest.setup.js',
 };
+
+

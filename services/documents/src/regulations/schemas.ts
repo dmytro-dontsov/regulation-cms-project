@@ -1,6 +1,6 @@
 import * as z from 'zod'
 
-const RegulationsFilter = z.object({
-  country: z.literal('pl', 'uk'),
-  leng: z.literal('pl', 'uk'),
+export const RegulationsFilter = z.object({
+  country: z.enum(['pl', 'ua']),
+  leng: z.enum(['pl', 'uk']),
 })

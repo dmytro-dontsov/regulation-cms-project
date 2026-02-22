@@ -6,8 +6,8 @@ export type Regulation = {
   path: string
   activeFrom: Day
   title: string
-  leng: 'pl'
-  country: 'pl'
+  leng: 'pl' | 'uk'
+  country: 'pl' | 'ua'
   created: Updater
   content: RegulationContent
   activeTo?: Day
